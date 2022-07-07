@@ -56,7 +56,7 @@ while True:
 
 
         #draw count
-        cv2.rectangle(img,(0,200),(150,400),(0,255,0),cv2.FILLED)
+        cv2.rectangle(img,(15,200),(217,400),(0,255,0),cv2.FILLED)
         cv2.putText(img, str(int(count)), (30,350), cv2.FONT_HERSHEY_PLAIN, 10,(200, 0, 0), 6)
 
     cTime = time.time()

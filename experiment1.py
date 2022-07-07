@@ -11,6 +11,7 @@ import pickle
 
 cap = cv2.VideoCapture('resources/exercisesall.mp4')
 pTime = 0
+p= 0
 class_name = "sad"
 # detector = fm.FaceMesh()
 
