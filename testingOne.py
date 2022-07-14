@@ -31,7 +31,7 @@ DATA_PATH = os.path.join('MP_Data')
 
 # Actions that we try to detect
 # actions = np.array(['dumble curls'])
-actions = np.array(['dumble curls', 'push-ups','squatting' ])
+actions = np.array(['dumbell curls', 'push-ups','squatting' ])
 
 # Thirty videos worth of data
 no_sequences = 30
@@ -78,9 +78,9 @@ c = model.summary()
 print(c)
 
 res = model.predict(X_test)
-d = actions[np.argmax(res[4])]
+d = actions[np.argmax(res[0])]
 
-e = actions[np.argmax(y_test[4])]
+e = actions[np.argmax(y_test[0])]
 print(d)
 print(e)
 
@@ -98,7 +98,7 @@ g = accuracy_score(ytrue, yhat)
 print(f)
 print(g)
 
-cap = cv2.VideoCapture('resources/pushup1.mp4')
+cap = cv2.VideoCapture('resources/squatting1.mp4')
 
 # Set mediapipe model
 with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
