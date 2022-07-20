@@ -72,7 +72,7 @@ model.add(Dense(actions.shape[0], activation='softmax'))
 
 model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
 
-model.fit(X_train, y_train, epochs=80, callbacks=[tb_callback])
+model.fit(X_train, y_train, epochs=40, callbacks=[tb_callback])
 
 c = model.summary()
 print(c)
@@ -98,14 +98,14 @@ g = accuracy_score(ytrue, yhat)
 print(f)
 print(g)
 
-cap = cv2.VideoCapture('resources/squatting1.mp4')
+cap = cv2.VideoCapture('resources/This All Pushups Workout Builds Your Chest!.mp4')
 
 # Set mediapipe model
 with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
     while True:
 
         success, img = cap.read()
-        # img = cv2.resize(img, (1000, 720))
+        img = cv2.resize(img, (1000, 720))
         imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
         results = holistic.process(imgRGB)
