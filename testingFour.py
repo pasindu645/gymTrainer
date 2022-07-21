@@ -75,7 +75,7 @@ model.add(Dense(actions.shape[0], activation='softmax'))
 model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
 
 # model.fit(X_train, y_train, epochs=1000, callbacks=[tb_callback])
-model = load_model('exercisesaction11.h5.h5')
+model = load_model('exercisesaction11.h5')
 
 c = model.summary()
 print(c)
