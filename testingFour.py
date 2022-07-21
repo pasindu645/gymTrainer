@@ -75,7 +75,7 @@ model.add(Dense(actions.shape[0], activation='softmax'))
 model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
 
 # model.fit(X_train, y_train, epochs=1000, callbacks=[tb_callback])
-model = load_model('exercisesaction11.h5')
+model = load_model('exercisesaction11.h5.h5')
 
 c = model.summary()
 print(c)
@@ -83,18 +83,18 @@ print(c)
 
 res = model.predict(X_test)
 
-d = actions[np.argmax(res[3])]
-e = actions[np.argmax(y_test[3])]
+d = actions[np.argmax(res[2])]
+e = actions[np.argmax(y_test[2])]
 
-f = actions[np.argmax(res[0])]
-g = actions[np.argmax(y_test[0])]
+f = actions[np.argmax(res[1])]
+g = actions[np.argmax(y_test[1])]
 print(d)
 print(e)
 print(f)
 print(g)
 
-# model.save('exercisesaction10.h5')
-# model = load_model('exercisesaction10.h5')
+# model.save('exercisesaction11.h5')
+# model = load_model('exercisesaction11.h5')
 
 
 # model.load_weights('exercisesaction4.h5')
@@ -110,7 +110,7 @@ g = accuracy_score(ytrue, yhat)
 print(f)
 print(g)
 
-cap = cv2.VideoCapture('resources/pushup5.mp4')
+cap = cv2.VideoCapture('resources/pushups-squatting.mp4')
 
 # Set mediapipe model
 
@@ -143,9 +143,9 @@ with mp_holistic.Holistic(min_detection_confidence=0.7, min_tracking_confidence=
         # 2. Prediction logic
         keypoints = pose
         sequence1.append(keypoints)
-        sequence1 = sequence1[-30:]
+        sequence1 = sequence1[-40:]
 
-        if len(sequence1) == 30:
+        if len(sequence1) == 40:
 
             res = model.predict(np.expand_dims(sequence1, axis=0))[0]
             print(actions[np.argmax(res)])

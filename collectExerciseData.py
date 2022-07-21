@@ -3,23 +3,24 @@ import numpy as np
 import os
 import mediapipe as mp
 
-cap = cv2.VideoCapture('resources/squatting.mp4')
+cap = cv2.VideoCapture('resources/hammer_curls2.mp4')
 mp_holistic = mp.solutions.holistic # Holistic model
 mp_drawing = mp.solutions.drawing_utils # Drawing utilities
 
 
 # Path for exported data, numpy arrays
-DATA_PATH = os.path.join('Data_exercises1')
+DATA_PATH = os.path.join('MP_Data1')
 
 # Actions that we try to detect
 # actions = np.array(['dumbell curls', 'push-ups','squatting' ])
-actions = np.array(['squatting'])
+# actions = np.array([ 'pushup' , 'squatting', 'hammer_curls'])
+actions = np.array([ 'hammer_curls' ])
 
 # Thirty videos worth of data
-no_sequences = 40
+no_sequences = 30
 
 # Videos are going to be 30 frames in length
-sequence_length = 40
+sequence_length = 30
 
 # Folder start
 # start_folder = 30
@@ -78,7 +79,7 @@ with mp_holistic.Holistic(min_detection_confidence=0.7, min_tracking_confidence=
 
                     keypoints = pose
                     npy_path = os.path.join(DATA_PATH, action, str(sequence), str(frame_num))
-                    # np.save(npy_path, keypoints)
+                    np.save(npy_path, keypoints)
 
 
 
